@@ -5,7 +5,7 @@ A small Aha.io API client. The package handles authentication and pagination, gi
 This is in no way associated with Aha.io. For Aha.io API documentation, please visit [aha.io/api](https://www.aha.io/api).
 
 
-## Install (coming soon)
+## Install
 ```commandline
 pip install ahapy
 ```
