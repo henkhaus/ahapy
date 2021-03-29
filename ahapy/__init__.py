@@ -42,6 +42,8 @@ class AhaV1(BaseAPI):
                 response = self.session.get(url, params=options)
             else:
                 response = self.session.get(url, params=options)
+                r = response.json()
+                self.count = r['pagination']['total_records']
 
             if not response.ok:
                 print("Response status code: " + str(response.status_code))
