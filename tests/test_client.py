@@ -25,9 +25,9 @@ def test_v1_fields():
 def test_v1_page():
     data = aha.query('initiatives', per_page=200)
     for i in data:
-        print(i)
+        print(i['name'])
 
 
-test_v1_page()
+#test_v1_count()
 #test_v1_count()
 
