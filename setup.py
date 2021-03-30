@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="ahapy",
-    version="0.0.1",
+    version="0.0.2",
     author="Robert Henkhaus",
     author_email="rhenkhaus@gmail.com",
     description="A small Aha.io API client",
@@ -20,7 +20,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    package_dir={"": "ahapy"},
+    package_dir={"ahapy": "ahapy"},
     packages=setuptools.find_packages(where="ahapy"),
     python_requires=">=3.6",
 )
