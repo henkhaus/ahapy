@@ -45,5 +45,14 @@ After running a query, you can check if the number of record receieved is the nu
 data = aha.query('initiatives')
 
 if len(data) == aha.count:
-    print('Records returned matches expectation.')
+    print('Records returned match expectation.')
+```
+
+The endpoint argument can be 'overloaded' to accommodate searches for objects by foriegn key. The actual endpoint is parsed and available on .endpoint member
+
+```python
+aha.query('initiatives/' + initiative_id + '/epics')
+
+print(aha.endpoint)
+# epics
 ```
