@@ -20,7 +20,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    package_dir={"ahapy": "ahapy"},
-    packages=setuptools.find_packages(where="ahapy"),
+    keywords=["aha", "aha.io"],
+    packages="ahapy",
     python_requires=">=3.6",
 )
