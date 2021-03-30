@@ -22,5 +22,6 @@ setuptools.setup(
     ],
     keywords=["aha", "aha.io"],
     packages="ahapy",
+    package_dir={'ahapy': 'ahapy'},
     python_requires=">=3.6",
 )
