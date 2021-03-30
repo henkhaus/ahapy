@@ -21,7 +21,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     keywords=["aha", "aha.io"],
-    packages="ahapy",
+    packages=setuptools.find_packages(exclude=('test*', )),
     package_dir={'ahapy': 'ahapy'},
     python_requires=">=3.6",
 )
