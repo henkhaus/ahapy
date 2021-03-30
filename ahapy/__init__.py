@@ -1,4 +1,5 @@
 import requests
+import re
 
 
 class BaseAPI(object):
@@ -21,6 +22,7 @@ class AhaV1(BaseAPI):
         self.page = 1
         self.total_pages = 0
         self.count = 0
+        self.endpoint = ''
 
         super(AhaV1, self).__init__(sub_domain, api_key)
 
@@ -31,10 +33,19 @@ class AhaV1(BaseAPI):
         self.count = r['pagination']['total_records']
         return self.count
     
-    def query (self, endpoint, **options):
+    def _parse_endpoint_arg(self, endpoint_arg):
+        s = re.split('/', endpoint_arg)
+        if re.match('[a-z]', s[-1]):
+            return s[-1]
+        else:
+            return s[-2]
+
+    def query(self, endpoint, **options):
         """
         Query for Aha.io V1 endpoint
         """
+        self.endpoint = self._parse_endpoint_arg(endpoint)
+
         while True:
             url = self.url + self.version + endpoint
             if self.page <= self.total_pages:
@@ -54,10 +65,9 @@ class AhaV1(BaseAPI):
             self.total_pages = r['pagination']['total_pages']
             self.page = r['pagination']['current_page'] + 1
             
-            if r[endpoint]:
-                for i in r[endpoint]:
+            if r[self.endpoint]:
+                for i in r[self.endpoint]:
                     yield i
             
             if self.page > self.total_pages:
                 break
-

@@ -1,4 +1,5 @@
 import os
+import re
 import math
 import unittest
 from ahapy import AhaV1
@@ -34,5 +35,23 @@ class TestClient(unittest.TestCase):
         aha.query('initiatives', per_page=200)
         expected_pages = math.ceil(aha.count / 200)
         self.assertEqual(expected_pages, aha.total_pages)
+
+
+    def test_v1_endpoint_parse_1(self):
+        aha = AhaV1('enverus', AHA_KEY)
+        endpoint = aha._parse_endpoint_arg('initiatives/12345/epics')
+        self.assertEqual('epics', endpoint)
+
+
+    def test_v1_endpoint_parse_2(self):
+        aha = AhaV1('enverus', AHA_KEY)
+        endpoint = aha._parse_endpoint_arg('initiatives/12345')
+        self.assertEqual('initiatives', endpoint)
+
+
+    def test_v1_endpoint_parse_3(self):
+        aha = AhaV1('enverus', AHA_KEY)
+        endpoint = aha._parse_endpoint_arg('initiatives')
+        self.assertEqual('initiatives', endpoint)
 
 
