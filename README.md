@@ -1,5 +1,8 @@
 # ahapy
 
+[![PyPI version](https://badge.fury.io/py/ahapy.svg)](https://badge.fury.io/py/ahapy)
+
+
 A small Aha.io API client. The package handles authentication and pagination, giving the user exactly the information they seek.
 
 This is in no way associated with Aha.io. For Aha.io API documentation, please visit [aha.io/api](https://www.aha.io/api).
