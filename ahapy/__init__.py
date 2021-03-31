@@ -75,8 +75,14 @@ class AhaV1(BaseAPI):
             if self._is_paginated(r):
                 self.total_pages = r['pagination']['total_pages']
                 self.page = r['pagination']['current_page'] + 1
-            
-            if r[self.endpoint]:
+            else:
+                # trim pluralization from endpoint as this is 
+                # singluar in response body if no pagination
+                # this is used as a check later to make sure 
+                # response body matches expectations
+                self.endpoint = self.endpoint[:-1]
+
+            if self.endpoint in r.keys():
                 for i in r[self.endpoint]:
                     yield i
             
