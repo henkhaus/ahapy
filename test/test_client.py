@@ -1,6 +1,7 @@
 import os
 import re
 import math
+import json
 import unittest
 from ahapy import AhaV1
 
@@ -55,3 +56,13 @@ class TestClient(unittest.TestCase):
         self.assertEqual('initiatives', endpoint)
 
 
+    def test_v1_is_paginated_true(self):
+        aha = AhaV1('enverus', AHA_KEY)
+        mock = {"pagination":"yes"}
+        self.assertTrue(aha._is_paginated(mock))
+    
+
+    def test_v1_is_paginated_false(self):
+        aha = AhaV1('enverus', AHA_KEY)
+        mock = {"no_pagination":"no"}
+        self.assertFalse(aha._is_paginated(mock))
