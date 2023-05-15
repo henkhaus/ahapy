@@ -106,7 +106,6 @@ class AhaV1(BaseAPI):
                 # so we need to give it special handling
                 result = r.copy()
                 if 'pagination' in result:
-                    print(result['pagination'])
                     del result['pagination']
                     yield result
 
